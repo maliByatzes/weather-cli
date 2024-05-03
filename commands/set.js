@@ -81,7 +81,6 @@ export async function configParams() {
   if (process.env[envv]) {
     const envvpath = process.env[envv];
     filePath = path.join(envvpath, `configstore/${pkg.name}.json`);
-    console.log(filePath);
   }
 
   // check if the configstore file exists
