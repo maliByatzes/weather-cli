@@ -99,3 +99,34 @@ export async function configParams() {
 
   console.log('Params are set successfully.'.green);
 }
+
+export function showParams() {
+  const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
+  const cfg = new Configstore(pkg.name);
+
+  if (typeof cfg.get('latitude') !== 'undefined') {
+    console.log(`Latitude: ${cfg.get('latitude')}`.blue);
+  } else {
+    console.log(`Latitude value is not set. Run \`wt cfg set\` to set up configs`.cyan);
+  }
+
+  if (typeof cfg.get('longitude') !== 'undefined') {
+    console.log(`Longitude: ${cfg.get('longitude')}`.blue);
+  } else {
+    console.log(`Longitude value is not set. Run \`wt cfg set\` to set up configs`.cyan);
+  }
+
+  console.log('Timezone: auto'.blue);
+
+  if (typeof cfg.get('langauge') !== 'undefined') {
+    console.log(`Language: ${cfg.get('langauge')}`.blue);
+  } else {
+    console.log(`Langauge value is not set. Run \`wt cfg set\` to set up configs`.cyan);
+  }
+
+  if (typeof cfg.get('units') !== 'undefined') {
+    console.log(`Units: ${cfg.get('units')}`.blue);
+  } else {
+    console.log(`Units value is not set. Run \`wt cfg set\` to set up configs`.cyan);
+  }
+}
